@@ -11,7 +11,7 @@ http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
 
   if (fullpath.path === "/") {
-    const indexPath = path.join(__dirname, 'data', 'index.html');
+    const indexPath = path.join(__dirname, 'public', 'index.html');
     fs.readFile(indexPath, 'utf8', (err, data) => {
       if (err) {
         res.write("<p>Something went wrong with loading the homepage.</p>");
