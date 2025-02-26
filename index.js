@@ -15,14 +15,13 @@ http.createServer((req, res) => {
     fs.readFile(indexPath, 'utf8', (err, data) => {
       if (err) {
         res.write("<p>Something went wrong with loading the homepage.</p>");
-        res.end();
       } else {
         res.write(data);  
-        res.end();
       }
+      res.end();
     });
 
-  } else if (fullpath.path.includes("students")) {
+  } else if (fullpath.pathname === "/students") {
     const studentName = fullpath.query.name;
     if (studentName) {
       const studentFilePath = path.join(__dirname, 'data', 'students', `${studentName}.html`);
@@ -45,7 +44,7 @@ http.createServer((req, res) => {
       res.end();
     }
 
-  } else if (fullpath.path.includes("teachers")) {
+  } else if (fullpath.pathname === "/teachers") {
     const teacherName = fullpath.query.name;
     if (teacherName) {
       const teacherFilePath = path.join(__dirname, 'data', 'teachers', `${teacherName}.html`);
